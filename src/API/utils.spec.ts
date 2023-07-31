@@ -1,20 +1,20 @@
 import { describe, it, expect, vi } from 'vitest';
-import { processWeatherDataForWeatherWidgetComponent, getWeatherWidgetDataBasedOnLatLong, getLatLonValuesForInputCity } from './utils';
+import { processWeatherDataForWeatherWidgetComponent, getWeatherDataForCity, getLatLonValuesForInputCity } from './utils';
 import axios from 'axios';
 
 describe('Weather API Utils', () => {
-    describe('getWeatherWidgetDataBasedOnLatLong', () => {
+    describe('getWeatherDataForCity', () => {
         it('should call axios get with correct params', async () => {
             const spy = vi.spyOn(axios, 'get');
     
-            await getWeatherWidgetDataBasedOnLatLong('New York');
+            await getWeatherDataForCity('New York');
             // TODO: remove the hardcoded params from this and mock an ENV file
             expect(spy).toHaveBeenCalledWith(`https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=-74.006&appid=9b183e6fa9c718578c431f7b1e2121b8`);
         });
         it('should return the fallback response when the function throws an error', async () => {
             const spy = vi.spyOn(axios, 'get').mockRejectedValue(new Error('Network Error'));
     
-            const res = await getWeatherWidgetDataBasedOnLatLong('New York');
+            const res = await getWeatherDataForCity('New York');
             expect(res).toEqual({ temperature: '0', condition: 'N/A', summary: 'No description available, please try again later' });
         });
     });

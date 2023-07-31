@@ -1,11 +1,6 @@
 <script setup lang="ts">
-// The component should take in only the data it needs to render. which will be.
-// temperature, weather[] - to base the icon on. summary to display my subtext.
 import { ref } from 'vue'
-import { getWeatherDataBasedOnLatLong } from '../API/utils.ts'
-const res = await getWeatherDataBasedOnLatLong(33.44, -94.04)
-console.log(res);
-console.log('STARTING');
+
 defineProps<{ msg: string }>()
 
 const count = ref(0)
@@ -24,8 +19,9 @@ const count = ref(0)
 
   <p>
     Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank">create-vue</a>, the official Vue + Vite
-    starter
+    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
+      >create-vue</a
+    >, the official Vue + Vite starter
   </p>
   <p>
     Install
