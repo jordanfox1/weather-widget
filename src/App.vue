@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import WeatherWidget from './components/WeatherWidget.vue'
+import 
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <WeatherWidget msg="Vite + Vue" /> // pass in the data for the component here.
 </template>
 
 <style scoped>
