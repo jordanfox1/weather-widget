@@ -12,7 +12,7 @@
 
 * run the tests -  `pnpm coverage` or `pnpm test`
 
-*Here is the current Test coverage* ![coverage](./src/assets/coverage.png)
+*Here is the current Test coverage* ![coverage](./src/assets/cov.png)
 ### Potential Improvements
 * The icon displaying should be improved to be closer to the actual response. I have tried to handle a bunch of different potential inputs which is not great.
 
