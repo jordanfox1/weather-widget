@@ -1,38 +1,42 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-defineProps<{ msg: string }>()
+const { summary, temperature, condition } = defineProps<{
+  summary: string;
+  temperature: string;
+  condition: string;
+}>();
 
-const count = ref(0)
+const currentCity = ref('Miami');
+
+const emit = defineEmits(['cityChange']);
+const onCityChange = (event: Event) => {
+  const target = event.target as HTMLSelectElement;
+  currentCity.value = target.value;
+  emit('cityChange', currentCity.value);
+};
+
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <section class="widget-container">
 
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
+    <select v-model="currentCity" @change="onCityChange">
+      <option value="New York">New York</option>
+      <option value="Miami">Miami</option>
+      <option value="Los Angeles">Los Angeles</option>
+    </select>
 
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+    <h1 class="widget-heading">{{ currentCity }}</h1>
+    <p class="widget-summary"> {{ summary }}</p>
+
+    <div class="widget-temp-container">
+      <h3>{{ temperature }}</h3><img src="|" alt="|">
+    </div>
+    <p>Conditions in {{ currentCity }} are: {{ condition }}</p>
+  </section>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
+/* Add your styles for the WeatherWidget here */
 </style>
