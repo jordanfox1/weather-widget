@@ -3,11 +3,11 @@ import ProcessedWeatherData from '../models/ProcessedWeatherData.interface';
 
 export async function getWeatherDataForCity(cityName: string): Promise<ProcessedWeatherData> {
     try {
-        const { lat, lon } = getLatLonValuesForInputCity(cityName);
+        // const { lat, lon } = getLatLonValuesForInputCity(cityName);
 
         // WARNING: This is not what I normally do. I have just chosen to expose my API key to make it easier for me to implement this example and will delete this key later.
-        const rawWeatherApiResponseData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9b183e6fa9c718578c431f7b1e2121b8`);
-        // const rawWeatherApiResponseData = { temperature: '0', condition: 'N/A', summary: 'No description available, please try again later' };
+        // const rawWeatherApiResponseData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9b183e6fa9c718578c431f7b1e2121b8`);
+        const rawWeatherApiResponseData = { temperature: '0', condition: 'N/A', summary: 'No description available, please try again later' };
 
         const processedWeatherData = processWeatherDataForWeatherWidgetComponent(rawWeatherApiResponseData);
         return processedWeatherData;
@@ -38,4 +38,31 @@ export function getLatLonValuesForInputCity(cityName: string) {
     const defaultCity = 'miami';
     const cityData = cities[normalizedCityName] || cities[defaultCity];
     return cityData;
+}
+
+
+export function getIconForWeatherCondition(condition: string): string {
+    //TODO: this should be improved by looking at the possible API responses and mapping the actual values to icons instead of guessing what the values may be.
+    switch (condition) {
+        case 'Clear':
+            return '☀️'; 
+        case 'Fine':
+            return '☀️'; 
+        case 'Sunny':
+            return '☀️'; 
+        case 'Clouds':
+            return '☁️';
+        case 'Cloudy':
+            return '☁️';
+        case 'Rain':
+            return '🌧';
+        case 'Rainy':
+            return '🌧';
+        case 'Storms':
+            return '🌧';
+        case 'Snow':
+            return '❄️';
+        default:
+            return '☁️';
+    }
 }

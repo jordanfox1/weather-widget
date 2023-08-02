@@ -9,6 +9,7 @@ const mockWeatherData = {
   temperature: '30°C',
   condition: 'Sunny',
   summary: 'A beautiful sunny day in Miami',
+  icon: '☀️'
 };
 
 const TestParentComponent = {
@@ -16,7 +17,7 @@ const TestParentComponent = {
     WeatherWidget,
   },
   // Pass the mockWeatherData as props to the WeatherWidget
-  template: '<WeatherWidget :summary="summary" :temperature="temperature" :condition="condition" />',
+  template: '<WeatherWidget :summary="summary" :temperature="temperature" :condition="condition" :icon="icon" />',
   setup() {
     // Create refs to hold the props
     const temperature = ref(mockWeatherData.temperature);

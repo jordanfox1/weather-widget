@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import WeatherWidget from './components/WeatherWidget.vue';
 import { ref, onMounted } from 'vue';
-import { getWeatherDataForCity } from './API/utils';
+import { getWeatherDataForCity, getIconForWeatherCondition } from './API/utils';
 
 const dataLoaded = ref(false);
 const temperature = ref('');
 const condition = ref('');
 const summary = ref('');
+const icon = ref('');
 const currentCity = ref('Miami');
 
 onMounted(async () => {
@@ -15,6 +16,7 @@ onMounted(async () => {
   condition.value = cond;
   summary.value = sum;
   dataLoaded.value = true;
+  icon.value = getIconForWeatherCondition(condition.value);
 });
 
 
@@ -26,15 +28,14 @@ const onCityChange = async (newCity: string) => {
   temperature.value = weatherData.temperature;
   condition.value = weatherData.condition;
   summary.value = weatherData.summary;
+  icon.value = getIconForWeatherCondition(condition.value);
 }
 </script>
 
 <template>
-  <div>
-    <WeatherWidget v-if="dataLoaded" @cityChange="onCityChange" :summary="summary" :temperature="temperature"
-      :condition="condition" />
-    <div v-else>Loading...</div>
-  </div>
+  <WeatherWidget v-if="dataLoaded" @cityChange="onCityChange" :summary="summary" :temperature="temperature"
+    :condition="condition" :icon="icon" />
+  <div v-else>Loading...</div>
 </template>
 
 <style scoped>
