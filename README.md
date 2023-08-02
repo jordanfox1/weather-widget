@@ -23,3 +23,5 @@
 * This is my first time using Vue and I may be making some mistakes without realizing as a result, please point them out if possible so I can learn from the experience!
 
 * There is a lot more I could have done with the different data, but decided to leave it here because the basic comes across I think.
+
+* The UI design is not very responsive or mobile-friendly, this could be improved a lot with a better design. Please view on desktop if possible.
