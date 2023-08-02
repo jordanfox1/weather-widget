@@ -33,7 +33,8 @@ const onCityChange = (event: Event) => {
     <div class="widget-temp-container">
       <h3>{{ temperature }}</h3><img src="|" alt="|">
     </div>
-    <p>Conditions in {{ currentCity }} are: {{ condition }}</p>
+    <p>Conditions in {{ currentCity }} are:</p>
+    <span>{{ condition }}</span>
   </section>
 </template>
 

@@ -7,19 +7,32 @@ const dataLoaded = ref(false);
 const temperature = ref('');
 const condition = ref('');
 const summary = ref('');
+const currentCity = ref('Miami');
 
 onMounted(async () => {
-    const { temperature: temp, condition: cond, summary: sum } = await getWeatherDataForCity('Miami');
-    temperature.value = temp;
-    condition.value = cond;
-    summary.value = sum;
-    dataLoaded.value = true;
+  const { temperature: temp, condition: cond, summary: sum } = await getWeatherDataForCity(currentCity.value);
+  temperature.value = temp;
+  condition.value = cond;
+  summary.value = sum;
+  dataLoaded.value = true;
 });
+
+
+const onCityChange = async (newCity: string) => {
+  currentCity.value = newCity;
+
+  const weatherData = await getWeatherDataForCity(newCity);
+
+  temperature.value = weatherData.temperature;
+  condition.value = weatherData.condition;
+  summary.value = weatherData.summary;
+}
 </script>
 
 <template>
   <div>
-    <WeatherWidget v-if="dataLoaded" :summary="summary" :temperature="temperature" :condition="condition" />
+    <WeatherWidget v-if="dataLoaded" @cityChange="onCityChange" :summary="summary" :temperature="temperature"
+      :condition="condition" />
     <div v-else>Loading...</div>
   </div>
 </template>
