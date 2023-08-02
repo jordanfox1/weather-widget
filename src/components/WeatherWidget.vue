@@ -16,12 +16,10 @@ const onCityChange = (event: Event) => {
   currentCity.value = target.value;
   emit('cityChange', currentCity.value);
 };
-
 </script>
 
 <template>
   <section class="widget-container">
-
     <div class="widget-dropdown">
       <select v-model="currentCity" @change="onCityChange">
         <option value="New York">New York</option>
@@ -35,7 +33,7 @@ const onCityChange = (event: Event) => {
 
     <section class="widget-temp-circle-parent-container">
       <div class="widget-temp-container">
-        <h2><b>{{ temperature }}°</b></h2>
+        <h2>{{ temperature }}°</h2>
         <i>{{ icon }}</i>
       </div>
     </section>

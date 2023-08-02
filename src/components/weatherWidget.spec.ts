@@ -6,7 +6,7 @@ import { ref } from 'vue';
 
 // Define the mock data for the WeatherWidget component
 const mockWeatherData = {
-  temperature: '30°C',
+  temperature: '30',
   condition: 'Sunny',
   summary: 'A beautiful sunny day in Miami',
   icon: '☀️'
@@ -36,7 +36,8 @@ describe('Weather Component', () => {
   describe('Displaying the correct data', () => {
     it('should display the data that gets passed in by the parent in the WeatherWidget', async () => {
       await render(TestParentComponent);
-      const temperatureElement = await screen.getByText(mockWeatherData.temperature);
+      screen.logTestingPlaygroundURL();
+      const temperatureElement = await screen.getByText(mockWeatherData.temperature+'°');
       const conditionElement = await screen.getByText(mockWeatherData.condition);
       const summaryElement = await screen.getByText(mockWeatherData.summary);
       
