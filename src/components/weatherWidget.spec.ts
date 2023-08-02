@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, getByText, screen, waitFor,fireEvent } from '@testing-library/vue';
+import { render, screen, waitFor } from '@testing-library/vue';
 import userEvent from '@testing-library/user-event';
 import WeatherWidget from './WeatherWidget.vue';
 import { ref } from 'vue';

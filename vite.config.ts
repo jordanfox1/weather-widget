@@ -9,4 +9,5 @@ export default defineConfig({
     environment: "jsdom",
   },
   plugins: [vue()],
+  base: "/weather-widget/"
 })
