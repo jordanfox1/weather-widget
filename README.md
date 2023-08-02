@@ -1,18 +1,25 @@
-# Vue 3 + TypeScript + Vite
+# Weather Widget
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### [visit deployed website](https://jordanfox1.github.io/weather-widget/)
+### How to start the server locally
+* Copy the repo and cd into the root directory
 
-## Recommended IDE Setup
+* If pnpm is not installed, install it globally with npm by running `npm i pnpm -g` or by following this [guide](https://pnpm.io/installation)
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+* install dependencies -  `pnpm i`
 
-## Type Support For `.vue` Imports in TS
+* start the server -  `pnpm run dev`
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+* run the tests -  `pnpm coverage` or `pnpm test`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+*Here is the current Test coverage* ![coverage](./src/assets/coverage.png)
+### Potential Improvements
+* The icon displaying should be improved to be closer to the actual response. I have tried to handle a bunch of different potential inputs which is not great.
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+* It doesn't have any loading animation while the data is being fetched which makes it look a bit strange when the DOM suddenly updates after a delay. I should have designed to show a loading animation during the delay time and disable the buttons to stop another API call being made while data is still being fetched.
+
+* I am exposing the API key which is not good. In the real world this would be made a secret and passed into the build.
+
+* This is my first time using Vue and I may be making some mistakes without realizing as a result, please point them out if possible so I can learn from the experience!
+
+* There is a lot more I could have done with the different data, but decided to leave it here because the basic comes across I think.
