@@ -6,7 +6,7 @@ export async function getWeatherDataForCity(cityName: string): Promise<Processed
         const { lat, lon } = getLatLonValuesForInputCity(cityName);
 
         // WARNING: This is not what I normally do. I have just chosen to expose my API key to make it easier for me to implement this example and will delete this key later.
-        const rawWeatherApiResponseData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9b183e6fa9c718578c431f7b1e2121b8`);
+        const rawWeatherApiResponseData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=YOUR_API_KEY`);
 
         const processedWeatherData = processWeatherDataForWeatherWidgetComponent(rawWeatherApiResponseData);
         return processedWeatherData;
